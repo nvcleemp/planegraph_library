@@ -109,5 +109,19 @@ void clear_all_edge_labels(PLANE_GRAPH *pg);
 
 PLANE_GRAPH *get_dual_graph(PLANE_GRAPH *pg);
 
+/**
+ * Return the minimum degree of the graph.
+ * @param pg
+ * @return the smallest degree of a vertex in this graph.
+ */
+int minimum_degree(PLANE_GRAPH *pg);
+
+/**
+ * Return the maximum degree of the graph.
+ * @param pg
+ * @return the largest degree of a vertex in this graph.
+ */
+int maximum_degree(PLANE_GRAPH *pg);
+
 #endif	/* PLANEGRAPH_BASE_H */
 

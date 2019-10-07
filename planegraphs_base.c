@@ -8,6 +8,7 @@
 #include "planegraphs_base.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 PLANE_GRAPH *new_plane_graph(int maxn, int maxe) {
     if(maxn <= 0){
@@ -229,4 +230,36 @@ PLANE_GRAPH *get_dual_graph(PLANE_GRAPH *pg){
     dual->faces_constructed = TRUE;
     
     return dual;
+}
+
+/**
+ * Return the minimum degree of the graph.
+ * @param pg
+ * @return the smallest degree of a vertex in this graph.
+ */
+int minimum_degree(PLANE_GRAPH *pg){
+    if(pg->nv == 0) return 0;
+    int minimum = pg->degree[0];
+    for (int i = 1; i < pg->nv; ++i) {
+        if(pg->degree[i] < minimum){
+            minimum = pg->degree[i];
+        }
+    }
+    return minimum;
+}
+
+/**
+ * Return the maximum degree of the graph.
+ * @param pg
+ * @return the largest degree of a vertex in this graph.
+ */
+int maximum_degree(PLANE_GRAPH *pg){
+    if(pg->nv == 0) return 0;
+    int maximum = pg->degree[0];
+    for (int i = 1; i < pg->nv; ++i) {
+        if(pg->degree[i] > maximum){
+            maximum = pg->degree[i];
+        }
+    }
+    return maximum;
 }
