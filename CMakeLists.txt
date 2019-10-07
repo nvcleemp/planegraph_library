@@ -10,4 +10,5 @@ add_library(
         planegraphs_output.c planegraphs_output.h
         planegraphs_automorphismgroup.c planegraphs_automorphismgroup.h
         planegraphs_cycles.c planegraphs_cycles.h
+        planegraphs_connectivity.c planegraphs_connectivity.h
 )
