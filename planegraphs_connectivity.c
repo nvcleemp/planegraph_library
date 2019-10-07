@@ -16,7 +16,7 @@
  */
 int edge_connectivity(PLANE_GRAPH *graph){
     PLANE_GRAPH *dual = get_dual_graph(graph);
-    int edge_connectivity = shortest_cycle(dual);
+    int edge_connectivity = shorter_cycle(dual, minimum_degree(graph));
     free_plane_graph(dual);
     return edge_connectivity;
 }
