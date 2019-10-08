@@ -77,7 +77,7 @@ void write_planar_code(PLANE_GRAPH *pg, FILE *f){
 }
 
 
-void writeEdgeCodeSmall(PLANE_GRAPH *pg, FILE *f){
+void write_edge_code_small(PLANE_GRAPH *pg, FILE *f){
     int i;
     PG_EDGE *e, *elast;
     
@@ -96,7 +96,7 @@ void writeEdgeCodeSmall(PLANE_GRAPH *pg, FILE *f){
     }
 }
 
-void writeBigEndianMultibyte(FILE *f, int number, int bytecount){
+void write_big_endian_multibyte(FILE *f, int number, int bytecount){
     if(bytecount==1){
         fprintf(f, "%c", number);
     } else {
@@ -111,7 +111,7 @@ void writeBigEndianMultibyte(FILE *f, int number, int bytecount){
     }    
 }
 
-void writeEdgeCodeLarge(PLANE_GRAPH *pg, FILE *f){
+void write_edge_code_large(PLANE_GRAPH *pg, FILE *f){
     int i;
     PG_EDGE *e, *elast;
     
@@ -159,13 +159,13 @@ void writeEdgeCodeLarge(PLANE_GRAPH *pg, FILE *f){
     fputc((k<<4)+l, f);
     
     //write the length of the body (s)
-    writeBigEndianMultibyte(f, s, k);
+    write_big_endian_multibyte(f, s, k);
     
     
     for(i=0; i<pg->nv; i++){
         e = elast = pg->first_edge[i];
         do {
-            writeBigEndianMultibyte(f, e->index, l);
+            write_big_endian_multibyte(f, e->index, l);
             e = e->next;
         } while (e != elast);
         if(i <pg-> nv - 1){
@@ -206,9 +206,9 @@ void write_edge_code(PLANE_GRAPH *pg, FILE *f){
     }
     
     if (pg->ne + pg->nv - 1 <= 255) {
-        writeEdgeCodeSmall(pg, f);
+        write_edge_code_small(pg, f);
     } else {
-        writeEdgeCodeLarge(pg, f);
+        write_edge_code_large(pg, f);
     }
     
 }
