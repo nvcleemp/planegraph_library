@@ -15,6 +15,12 @@
 extern "C" {
 #endif
 
+/**
+ * Output the planar code of the graph
+ * @param pg
+ * @param f
+ * @param print_header Include the header for this code
+ */
 void write_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
 
 /**
@@ -25,6 +31,12 @@ void write_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
  */
 void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
 
+/**
+ * Output the edge code of the graph
+ * @param pg
+ * @param f
+ * @param print_header Include the header for this code
+ */
 void write_edge_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
 
 /**

@@ -58,6 +58,12 @@ void write_planar_code_short(PLANE_GRAPH *pg, FILE *f){
     }
 }
 
+/**
+ * Output the planar code of the graph
+ * @param pg
+ * @param f
+ * @param print_header Include the header for this code
+ */
 void write_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
     if(print_header){
         fprintf(f, ">>planar_code<<");
@@ -124,6 +130,7 @@ void write_dual_planar_code_short(PLANE_GRAPH *pg, FILE *f){
  * Output the planar code of the dual of the graph
  * @param pg
  * @param f
+ * @param print_header Include the header for this code
  */
 void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
     if(print_header){
@@ -300,6 +307,12 @@ void write_dual_edge_code_large(PLANE_GRAPH *pg, FILE *f){
     exit(-1);
 }
 
+/**
+ * Output the edge code of the dual of the graph
+ * @param pg
+ * @param f
+ * @param print_header Include the header for this code
+ */
 void write_dual_edge_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
     int counter=0;
     PG_EDGE *e, *elast;
