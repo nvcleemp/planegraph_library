@@ -17,7 +17,21 @@ extern "C" {
 
 void write_planar_code(PLANE_GRAPH *pg, FILE *f);
 
+/**
+ * Output the planar code of the dual of the graph
+ * @param pg
+ * @param f
+ */
+void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f);
+
 void write_edge_code(PLANE_GRAPH *pg, FILE *f);
+
+/**
+ * Output the edge code of the dual of the graph
+ * @param pg
+ * @param f
+ */
+void write_dual_edge_code(PLANE_GRAPH *pg, FILE *f);
 
 #ifdef	__cplusplus
 }
