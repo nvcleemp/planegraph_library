@@ -35,7 +35,7 @@ void write_planar_code_short(PLANE_GRAPH *pg, FILE *f){
     //write the number of vertices
     fputc(0, f);
     temp = pg->nv;
-    if (fwrite(&temp, sizeof (unsigned short), 1, stdout) != 1) {
+    if (fwrite(&temp, sizeof (unsigned short), 1, f) != 1) {
         fprintf(stderr, "fwrite() failed -- exiting!\n");
         exit(EXIT_FAILURE);
     }
@@ -58,12 +58,8 @@ void write_planar_code_short(PLANE_GRAPH *pg, FILE *f){
     }
 }
 
-void write_planar_code(PLANE_GRAPH *pg, FILE *f){
-    static int first = TRUE;
-    
-    if(first){
-        first = FALSE;
-        
+void write_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
+    if(print_header){
         fprintf(f, ">>planar_code<<");
     }
     
@@ -129,12 +125,9 @@ void write_dual_planar_code_short(PLANE_GRAPH *pg, FILE *f){
  * @param pg
  * @param f
  */
-void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f){
-    static int first = TRUE;
-
-    if(first){
-        first = FALSE;
-        fprintf(stdout, ">>planar_code<<");
+void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
+    if(print_header){
+        fprintf(f, ">>planar_code<<");
     }
 
     if(!pg->faces_constructed) construct_faces(pg);
@@ -248,14 +241,11 @@ void write_edge_code_large(PLANE_GRAPH *pg, FILE *f){
     }
 }
 
-void write_edge_code(PLANE_GRAPH *pg, FILE *f){
-    static int first = TRUE;
+void write_edge_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
     int i, counter=0;
     PG_EDGE *e, *elast;
     
-    if(first){
-        first = FALSE;
-        
+    if(print_header){
         fprintf(f, ">>edge_code<<");
     }
     
@@ -310,14 +300,12 @@ void write_dual_edge_code_large(PLANE_GRAPH *pg, FILE *f){
     exit(-1);
 }
 
-void write_dual_edge_code(PLANE_GRAPH *pg, FILE *f){
-    static int first = TRUE;
+void write_dual_edge_code(PLANE_GRAPH *pg, FILE *f, boolean print_header){
     int counter=0;
     PG_EDGE *e, *elast;
 
-    if(first){
-        first = FALSE;
-        fprintf(stdout, ">>edge_code<<");
+    if(print_header){
+        fprintf(f, ">>edge_code<<");
     }
 
     if(!pg->faces_constructed) construct_faces(pg);
