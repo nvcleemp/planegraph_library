@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include "planegraphs_output.h"
 
+//----------------PLANAR CODE--------------------
+
 void write_planar_code_char(PLANE_GRAPH *pg, FILE *f){
     int i;
     PG_EDGE *e, *elast;
@@ -146,6 +148,8 @@ void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f){
         exit(-1);
     }
 }
+
+//----------------EDGE CODE--------------------
 
 void write_edge_code_small(PLANE_GRAPH *pg, FILE *f){
     int i;
