@@ -103,6 +103,15 @@ void free_plane_graph(PLANE_GRAPH *pg);
  */
 void construct_faces(PLANE_GRAPH *pg);
 
+/**
+ * Check whether two vertices are adjacent
+ * @param pg
+ * @param v1
+ * @param v2
+ * @return TRUE if there is an edge from v1 to v2, and FALSE otherwise
+ */
+boolean are_adjacent(PLANE_GRAPH *pg, int v1, int v2);
+
 PG_EDGE *find_edge(PLANE_GRAPH *pg, int from, int to);
 
 void clear_all_edge_labels(PLANE_GRAPH *pg);

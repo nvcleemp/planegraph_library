@@ -84,6 +84,26 @@ void free_plane_graph(PLANE_GRAPH *pg){
     free(pg);
 }
 
+/**
+ * Check whether two vertices are adjacent
+ * @param pg
+ * @param v1
+ * @param v2
+ * @return TRUE if there is an edge from v1 to v2, and FALSE otherwise
+ */
+boolean are_adjacent(PLANE_GRAPH *pg, int v1, int v2) {
+    PG_EDGE *e, *elast;
+
+    e = elast = pg->first_edge[v1];
+    do {
+        if (e->end == v2) {
+            return TRUE;
+        }
+        e = e->next;
+    } while (e != elast);
+    return FALSE;
+}
+
 PG_EDGE *find_edge(PLANE_GRAPH *pg, int from, int to) {
     PG_EDGE *e, *elast;
 
