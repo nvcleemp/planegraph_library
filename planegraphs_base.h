@@ -73,13 +73,13 @@ struct __plane_graph {
 
 #define RESETMARKS(pg) {int mki; if (((pg)->mark_value += 2) > 30000) \
        { (pg)->mark_value = 2; for (mki=0;mki<(pg)->maxe;++mki) (pg)->edges[mki].mark=0;}}
-#define MARK(pg, e) (e)->mark = (pg)->markvalue
+#define MARK(pg, e) (e)->mark = (pg)->mark_value
 #define MARKLO(pg, e) (e)->mark = (pg)->mark_value
-#define MARKHI(pg, e) (e)->mark = (pg)->markvalue+1
-#define UNMARK(pg, e) (e)->mark = (pg)->markvalue-1
-#define ISMARKED(pg, e) ((e)->mark >= (pg)->markvalue)
+#define MARKHI(pg, e) (e)->mark = (pg)->mark_value+1
+#define UNMARK(pg, e) (e)->mark = (pg)->mark_value-1
+#define ISMARKED(pg, e) ((e)->mark >= (pg)->mark_value)
 #define ISMARKEDLO(pg, e) ((e)->mark == (pg)->mark_value)
-#define ISMARKEDHI(pg, e) ((e)->mark > (pg)->markvalue)
+#define ISMARKEDHI(pg, e) ((e)->mark > (pg)->mark_value)
 
 /**
  * Creates a new planar graph data structure that can hold plane graphs with
