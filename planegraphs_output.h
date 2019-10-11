@@ -32,6 +32,14 @@ void write_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
 void write_dual_planar_code(PLANE_GRAPH *pg, FILE *f, boolean print_header);
 
 /**
+ * Output the planar code of the graph and subdivides each marked edge with a single vertex.
+ * @param pg
+ * @param f
+ * @param print_header Include the header for this code
+ */
+void write_planar_code_marked_edges_subdivided(PLANE_GRAPH *pg, FILE *f, boolean print_header);
+
+/**
  * Output the edge code of the graph
  * @param pg
  * @param f
