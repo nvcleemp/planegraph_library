@@ -251,6 +251,7 @@ void write_planar_code_marked_edges_subdivided(PLANE_GRAPH *pg, FILE *f, boolean
     int marked_count = 0;
     for (int i = 0; i < pg->nv - 1; ++i) {
         PG_EDGE *e, *elast;
+        e = elast = pg->first_edge[i];
         do {
             if(e->end > i && (ISMARKED(pg, e) || ISMARKED(pg, e->inverse))){
                 //make sure both orientations are marked
