@@ -28,11 +28,14 @@ struct __pg_edge {
     PG_EDGE *prev; /* previous edge in clockwise direction */
     PG_EDGE *next; /* next edge in clockwise direction */
     PG_EDGE *inverse; /* the edge that is inverse to this one */
-    
-     /* two ints for temporary use;
-      * Only access mark via the MARK macros.
-      */
-    int mark, index;
+
+    /* two ints for temporary use;
+     */
+    int index, colour;
+
+    /* Only access mark via the MARK macros.
+     */
+    int mark;
     
     //a label can be used to store any additional information you want to
     //associate with an edge
